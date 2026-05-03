@@ -6,7 +6,7 @@ on:
 
 jobs:
   check-for-tests:
-    runs-on: local
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Check for test files
@@ -22,7 +22,7 @@ jobs:
           path: napaka.txt
 
   test:
-    runs-on: local
+    runs-on: self-hosted
     needs: check-for-tests
     steps:
       - uses: actions/checkout@v4
