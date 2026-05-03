@@ -32,6 +32,8 @@ jobs:
           name: napaka
           path: .
       - uses: oven-sh/setup-bun@v2
+      - name: "Install deps"
+        run: "bun run i"
       - name: Check for errors in tests
         run: |
           if [ -s napaka.txt ]; then
