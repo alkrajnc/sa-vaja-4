@@ -1,0 +1,38 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-for-tests:
+    runs-on: testRunner
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/upload-artifact@v7
+        with:
+          name: napaka
+          path: ./napake.txt
+      - name: "Check for test files"
+        run: |
+          if [ -z "$(find . -maxdepth 1 -name "*.test.ts")" ]; then
+            echo "No *.test.ts files found" >&2
+          fi
+
+  test:
+    runs-on: testRunner
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v7
+        with:
+          name: napaka
+          path: ./napake.txt
+      - name: "Check for errors in tests"
+        run: |
+          if [ ! -s napake.txt ]; then
+            return 0
+          fi
+      - uses: oven-sh/setup-bun@v2
+      - name: Run tests
+        run: "bun run test"
