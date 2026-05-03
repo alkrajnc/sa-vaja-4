@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import * as validator from "./index";
+import * as validator from "./validator";
 
 test("validate string min length", () => {
   const schema = validator.schema(validator.string().min(2));
