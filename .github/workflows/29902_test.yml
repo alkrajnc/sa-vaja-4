@@ -33,7 +33,7 @@ jobs:
           path: .
       - uses: oven-sh/setup-bun@v2
       - name: "Install deps"
-        run: "bun run i"
+        run: "bun i"
       - name: Check for errors in tests
         run: |
           if [ -s napaka.txt ]; then
