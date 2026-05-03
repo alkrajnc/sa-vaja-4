@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "bun build ./index.ts --outdir ./dist --target bun"
   },
   "devDependencies": {
     "@types/bun": "latest",
